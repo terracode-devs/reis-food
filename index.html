@@ -47,7 +47,8 @@
   <header class="hero" id="inicio">
     <nav class="navbar" id="navbar">
       <div class="nav-logo"><img src="img/logo.png" alt="Reis Food Logo" class="nav-logo-img"> <span>REIS FOOD</span></div>
-      <div class="nav-links" id="nav-links">
+      <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+    <div class="nav-links" id="nav-links">
         <a href="#burguers">🍔 Burguers</a>
         <a href="#dogs">🌭 Dogs</a>
         <a href="#pasteis">🥟 Pastéis</a>
@@ -312,20 +313,11 @@
         <div class="adicionais-list" id="adicionais-list"></div>
       </div>
 
-      <!-- SELEÇÃO ESPECIAL CHURROS -->
+      <!-- CHURROS: só cobertura (recheio já definido pelo card escolhido) -->
       <div class="modal-churros" id="modal-churros" style="display:none">
-        <div class="churros-escolha">
-          <div>
-            <h4>Recheio</h4>
-            <div class="radio-group" id="churros-recheio">
-              <label><input type="radio" name="recheio" value="Doce de Leite" checked> Doce de Leite</label>
-              <label><input type="radio" name="recheio" value="Chocolate"> Chocolate</label>
-            </div>
-          </div>
-          <div>
-            <h4>Cobertura <small>(define o preço)</small></h4>
-            <div class="radio-group" id="churros-cobertura"></div>
-          </div>
+        <div class="churros-bloco">
+          <h4>✨ Escolha a Cobertura <small>— define o preço</small></h4>
+          <div class="c-chips c-chips--grid" id="churros-cobertura"></div>
         </div>
       </div>
 
