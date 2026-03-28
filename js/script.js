@@ -346,15 +346,15 @@ const coberturas = [
   { nome: 'Kinder Bueno', preco: 15.00 },
 ];
 
-/* Horários de funcionamento */
+/* Horários de funcionamento (horário de Brasília) */
 const horarios = {
-  0: { aberto: true, inicio: 17, fim: 23 },  // Domingo
-  1: { aberto: true, inicio: 17, fim: 23 },  // Segunda
-  2: { aberto: true, inicio: 17, fim: 23 },  // Terça
-  3: { aberto: true, inicio: 17, fim: 23 },  // Quarta
-  4: { aberto: true, inicio: 17, fim: 23 },  // Quinta
-  5: { aberto: true, inicio: 17, fim: 24 },  // Sexta
-  6: { aberto: true, inicio: 17, fim: 24 },  // Sábado
+  0: { aberto: true,  inicio: 18, fim: 24 },  // Domingo
+  1: { aberto: true,  inicio: 18, fim: 24 },  // Segunda
+  2: { aberto: true,  inicio: 18, fim: 24 },  // Terça
+  3: { aberto: false, inicio: 0,  fim: 0  },  // Quarta — FECHADO
+  4: { aberto: true,  inicio: 18, fim: 24 },  // Quinta
+  5: { aberto: true,  inicio: 18, fim: 24 },  // Sexta
+  6: { aberto: true,  inicio: 18, fim: 24 },  // Sábado
 };
 
 /* ============================

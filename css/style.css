@@ -753,3 +753,75 @@ button { cursor: pointer; font-family: var(--font-corpo); border: none; backgrou
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,208,0,0.3); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--amarelo); }
+
+/* ============================
+   LOGO (substitui coroa)
+   ============================ */
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 6px rgba(212,175,55,0.5));
+}
+
+.hero-logo-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(212,175,55,0.7));
+  animation: float 3s ease-in-out infinite;
+}
+
+.loading-logo-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(212,175,55,0.8));
+}
+
+.footer-logo-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 4px rgba(212,175,55,0.4));
+}
+
+/* ============================
+   HORÁRIO — linha fechado
+   ============================ */
+.fechado-row td {
+  color: #e55;
+  font-weight: 700;
+}
+
+/* ============================
+   MAPA GOOGLE MAPS
+   ============================ */
+.mapa-container {
+  margin-top: 1.2rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(212,175,55,0.25);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  position: relative;
+}
+
+.mapa-abrir-btn {
+  display: block;
+  text-align: center;
+  background: var(--gold);
+  color: #111;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.mapa-abrir-btn:hover {
+  background: #f5d060;
+  opacity: 0.95;
+}
