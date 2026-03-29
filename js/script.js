@@ -150,14 +150,14 @@ function atualizarStatus() {
       var d = (dia + i) % 7;
       if (DIAS_ABERTOS[d]) { prox = NOMES[d]; break; }
     }
-    texto.textContent = '🔴 Fechado — Abre ' + (prox || 'em breve') + ' às 18h';
+    texto.textContent = '🔴 Fechado';
     return;
   }
 
   if (hhmm >= A_INI && hhmm < F_PREV) {
     // ABERTO: 18:00 até 23:00
     badge.classList.add('status-aberto');
-    texto.textContent = '🟢 Aberto — Das 18h às 00h';
+    texto.textContent = '🟢 Aberto';
   } else if (hhmm >= F_PREV) {
     // FECHA EM BREVE: 23:01 – 23:59
     badge.classList.add('status-alerta');
@@ -169,7 +169,7 @@ function atualizarStatus() {
   } else {
     // FECHADO: 00:00 – 17:00
     badge.classList.add('status-fechado');
-    texto.textContent = '🔴 Fechado — Abre hoje às 18h';
+    texto.textContent = '🔴 Fechado';
   }
 }
 atualizarStatus();
