@@ -754,22 +754,46 @@ button { cursor: pointer; font-family: var(--font-corpo); border: none; backgrou
 
 /* Mobile grande */
 @media (max-width: 768px) {
+  /* Menu desliza da direita, ocupa 82% da largura */
   .nav-links {
-    position: fixed; top: 0; right: -100%; bottom: 0;
-    width: 280px;
-    background: rgba(17,17,17,0.98);
-    flex-direction: column; justify-content: center;
-    gap: 8px; padding: 40px 24px;
-    transition: right 0.3s ease;
-    backdrop-filter: blur(10px);
-    border-left: 1px solid rgba(255,208,0,0.15);
-    z-index: 799;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 82%;
+    height: 100dvh;          /* fallback abaixo */
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 60px 28px 40px;
+    z-index: 1000;
+    transform: translateX(100%);   /* fora da tela à direita */
+    transition: transform 0.3s ease;
+    border-left: 2px solid rgba(255, 208, 0, 0.2);
+    overflow-y: auto;
+    /* sem backdrop-filter — evita bug de empilhamento em iOS */
   }
-  .nav-links.open { right: 0; }
-  .nav-links a { font-size: 1.1rem; padding: 12px 16px; border-radius: 12px; }
-  .nav-toggle { display: flex; z-index: 801; }
+  .nav-links.open {
+    transform: translateX(0);     /* entra na tela */
+  }
+  .nav-links a {
+    font-size: 1.15rem;
+    padding: 13px 16px;
+    border-radius: 12px;
+    width: 100%;
+  }
+  .nav-toggle {
+    display: flex;
+    z-index: 1001;   /* acima do menu */
+  }
   .whatsapp-float span { display: none; }
-  .whatsapp-float { padding: 14px; border-radius: 50%; width: 52px; height: 52px; justify-content: center; bottom: 100px; }
+  .whatsapp-float {
+    padding: 14px; border-radius: 50%;
+    width: 52px; height: 52px;
+    justify-content: center; bottom: 100px;
+  }
   .modal-box { padding: 28px 20px; }
 }
 
@@ -948,53 +972,27 @@ button { cursor: pointer; font-family: var(--font-corpo); border: none; backgrou
 }
 
 /* ============================
-   NAV OVERLAY (mobile)
+   NAV OVERLAY (mobile) — área de fechamento (os 18% à esquerda)
    ============================ */
-.nav-overlay {
+#nav-overlay {
+  display: none;              /* só existe no mobile via JS */
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  z-index: 798;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  pointer-events: none;
+  top: 0; left: 0;
+  width: 18%;                 /* a fatia que fica visível à esquerda */
+  height: 100vh;
+  z-index: 999;               /* abaixo do menu (1000) mas acima de tudo */
+  background: transparent;    /* sem escurecimento — só área de clique */
+  cursor: pointer;
 }
-.nav-overlay.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
+#nav-overlay.ativo {
+  display: block;
 }
 
 /* ============================================================
    PATCH v3 — sobrescreve conflitos das versões anteriores
    ============================================================ */
 
-/* --- NAV OVERLAY: cobre tudo, bloqueia interação atrás --- */
-#nav-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  background: rgba(0,0,0,0.85) !important;
-  z-index: 797 !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transition: opacity .3s, visibility .3s !important;
-  pointer-events: none !important;
-  display: block !important;   /* nunca display:none */
-}
-#nav-overlay.ativo {
-  visibility: visible !important;
-  opacity: 1 !important;
-  pointer-events: all !important;
-}
-/* nav-links acima do overlay */
-#nav-links { z-index: 800 !important; }
-#nav-toggle { z-index: 801 !important; }
+/* nav z-indexes definidos no media query acima */
 
 /* --- STATUS BADGE: variantes de cor --- */
 .status-aberto  { background: rgba(37,211,102,.15) !important; border-color: rgba(37,211,102,.4) !important; }
@@ -1171,4 +1169,126 @@ button { cursor: pointer; font-family: var(--font-corpo); border: none; backgrou
   text-align: center;
   padding: 9px 14px;
   font-size: .82rem;
+}
+
+/* ============================================================
+   MODAL DE CONFIRMAÇÃO — Limpar Carrinho
+   ============================================================ */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;                        /* acima de tudo */
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  pointer-events: none;
+  transition: background 0.25s ease, backdrop-filter 0.25s ease;
+}
+.confirm-overlay.active {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(6px);
+  pointer-events: all;
+}
+
+.confirm-box {
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 36px 28px 28px;
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  transform: scale(0.88) translateY(12px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.confirm-overlay.active .confirm-box {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* Botão fechar (X) */
+.confirm-x {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+.confirm-x:hover {
+  color: #ff6666;
+  background: rgba(255, 0, 0, 0.12);
+}
+
+/* Ícone */
+.confirm-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+/* Título */
+.confirm-title {
+  font-family: var(--font-titulo);
+  font-size: 1.3rem;
+  color: var(--branco);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Mensagem */
+.confirm-msg {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Botões */
+.confirm-btns {
+  display: flex;
+  gap: 10px;
+}
+.confirm-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-corpo);
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.2s;
+}
+.confirm-btn:hover  { filter: brightness(1.1); }
+.confirm-btn:active { transform: scale(0.96); }
+
+.confirm-btn--cancel {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.confirm-btn--cancel:hover {
+  background: rgba(255, 255, 255, 0.13);
+  color: var(--branco);
+}
+
+.confirm-btn--ok {
+  background: #c0392b;
+  color: #fff;
+}
+.confirm-btn--ok:hover {
+  background: #e74c3c;
 }

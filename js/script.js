@@ -184,7 +184,10 @@ window.addEventListener('scroll', function() {
 });
 
 // ============================================================
-// 7. MENU MOBILE — overlay cobre tudo, scroll bloqueado
+// 7. MENU MOBILE
+// Menu desliza da direita (82% da tela).
+// Os 18% à esquerda ficam visíveis e fecham o menu ao clicar.
+// A página permanece rolável enquanto o menu está aberto.
 // ============================================================
 (function() {
   var toggle  = document.getElementById('nav-toggle');
@@ -192,22 +195,59 @@ window.addEventListener('scroll', function() {
   var overlay = document.getElementById('nav-overlay');
   if (!toggle || !links) return;
 
-  function abre() {
+  var menuAberto = false;
+
+  function abrirMenu() {
+    menuAberto = true;
     links.classList.add('open');
-    overlay && overlay.classList.add('ativo');
-    document.documentElement.style.overflow = 'hidden';
-  }
-  function fecha() {
-    links.classList.remove('open');
-    overlay && overlay.classList.remove('ativo');
-    document.documentElement.style.overflow = '';
+    toggle.setAttribute('aria-expanded', 'true');
+    // Muda ícone para ✕
+    toggle.querySelectorAll('span').forEach(function(s, i) {
+      if (i === 0) { s.style.transform = 'translateY(8px) rotate(45deg)'; }
+      if (i === 1) { s.style.opacity = '0'; }
+      if (i === 2) { s.style.transform = 'translateY(-8px) rotate(-45deg)'; }
+    });
+    // Mostra a área de clique (os 18% à esquerda)
+    if (overlay) overlay.classList.add('ativo');
+    // NÃO bloqueia o scroll da página
   }
 
-  toggle.addEventListener('click', function() {
-    links.classList.contains('open') ? fecha() : abre();
+  function fecharMenu() {
+    menuAberto = false;
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    // Restaura ícone para ☰
+    toggle.querySelectorAll('span').forEach(function(s) {
+      s.style.transform = '';
+      s.style.opacity = '';
+    });
+    if (overlay) overlay.classList.remove('ativo');
+  }
+
+  // Botão hamburguer abre/fecha
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    menuAberto ? fecharMenu() : abrirMenu();
   });
-  links.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', fecha); });
-  overlay && overlay.addEventListener('click', fecha);
+
+  // Clicar num link fecha o menu
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', fecharMenu);
+  });
+
+  // Clicar nos 18% visíveis (overlay) fecha o menu
+  // Apenas evento 'click' — touchmove/scroll não fecham
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      e.stopPropagation();
+      fecharMenu();
+    });
+  }
+
+  // Fechar com Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && menuAberto) fecharMenu();
+  });
 })();
 
 // ============================================================
@@ -308,13 +348,50 @@ function renderCarrinho() {
   closeBtn && closeBtn.addEventListener('click', fecha);
   overlay  && overlay.addEventListener('click', fecha);
 
-  var limpar = document.getElementById('limpar-cart-btn');
-  limpar && limpar.addEventListener('click', function() {
-    if (!confirm('Limpar todo o pedido?')) return;
+  // Modal de confirmação personalizado para limpar carrinho
+  var limpar        = document.getElementById('limpar-cart-btn');
+  var confirmOvl    = document.getElementById('confirm-overlay');
+  var confirmOk     = document.getElementById('confirm-ok');
+  var confirmCancel = document.getElementById('confirm-cancel');
+  var confirmX      = document.getElementById('confirm-x');
+
+  function abrirConfirm() {
+    if (!confirmOvl) return;
+    confirmOvl.classList.add('active');
+    confirmOvl.setAttribute('aria-hidden', 'false');
+    // Foco no botão "Cancelar" (ação segura por padrão)
+    setTimeout(function() { if (confirmCancel) confirmCancel.focus(); }, 50);
+  }
+
+  function fecharConfirm() {
+    if (!confirmOvl) return;
+    confirmOvl.classList.remove('active');
+    confirmOvl.setAttribute('aria-hidden', 'true');
+  }
+
+  function executarLimpar() {
+    fecharConfirm();
     carrinho = [];
     save();
     atualizarBadge();
     renderCarrinho();
+  }
+
+  limpar        && limpar.addEventListener('click', abrirConfirm);
+  confirmOk     && confirmOk.addEventListener('click', executarLimpar);
+  confirmCancel && confirmCancel.addEventListener('click', fecharConfirm);
+  confirmX      && confirmX.addEventListener('click', fecharConfirm);
+
+  // Fechar ao clicar no fundo (fora da caixa)
+  confirmOvl && confirmOvl.addEventListener('click', function(e) {
+    if (e.target === confirmOvl) fecharConfirm();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && confirmOvl && confirmOvl.classList.contains('active')) {
+      fecharConfirm();
+    }
   });
 })();
 

@@ -43,12 +43,14 @@
     <span class="cart-badge" id="cart-badge">0</span>
   </button>
 
+  <!-- Área de clique para fechar o menu mobile (18% à esquerda) -->
+  <div id="nav-overlay" aria-hidden="true"></div>
+
   <!-- HEADER / HERO -->
   <header class="hero" id="inicio">
     <nav class="navbar" id="navbar">
       <div class="nav-logo"><img src="img/logo.png" alt="Reis Food Logo" class="nav-logo-img"> <span>REIS FOOD</span></div>
-      <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
-    <div class="nav-links" id="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#burguers">🍔 Burguers</a>
         <a href="#dogs">🌭 Dogs</a>
         <a href="#pasteis">🥟 Pastéis</a>
@@ -56,7 +58,7 @@
         <a href="#bebidas">🥤 Bebidas</a>
         <a href="#sobre">Sobre</a>
       </div>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </nav>
@@ -372,6 +374,20 @@
       <button class="limpar-cart-btn" id="limpar-cart-btn">🗑️ Limpar pedido</button>
     </div>
   </aside>
+
+  <!-- MODAL DE CONFIRMAÇÃO (Limpar Carrinho) -->
+  <div class="confirm-overlay" id="confirm-overlay" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-hidden="true">
+    <div class="confirm-box" id="confirm-box">
+      <button class="confirm-x" id="confirm-x" aria-label="Fechar">✕</button>
+      <div class="confirm-icon" aria-hidden="true">🗑️</div>
+      <h3 class="confirm-title" id="confirm-title">Limpar pedido?</h3>
+      <p class="confirm-msg">Todos os itens do carrinho serão removidos. Essa ação não pode ser desfeita.</p>
+      <div class="confirm-btns">
+        <button class="confirm-btn confirm-btn--cancel" id="confirm-cancel">Cancelar</button>
+        <button class="confirm-btn confirm-btn--ok" id="confirm-ok">Sim, limpar</button>
+      </div>
+    </div>
+  </div>
 
   <!-- TOAST NOTIFICAÇÃO -->
   <div class="toast" id="toast" role="alert" aria-live="polite" aria-atomic="true"></div>
