@@ -9,9 +9,7 @@
   <meta property="og:description" content="Burguers, Hot Dogs, Pastéis, Churros e Bebidas. Peça agora pelo WhatsApp!">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="img/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -224,7 +222,7 @@
           <p>Delivery e retirada no trailer</p>
         </div>
         <div class="sobre-card">
-          <span><img src="img/logo.png" alt="Qualidade Real" style="width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 4px rgba(212,175,55,0.5))"></span>
+          <span><img src="img/logo.png" alt="Qualidade Real" class="sobre-qualidade-img"></span>
           <strong>Qualidade Real</strong>
           <p>Hamburguer artesanal de verdade</p>
         </div>
@@ -264,7 +262,7 @@
             src="https://maps.google.com/maps?q=-23.434433,-50.560865&z=16&output=embed"
             width="100%"
             height="280"
-            style="border:0; border-radius: 12px;"
+            class="mapa-iframe"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
@@ -316,7 +314,7 @@
       </div>
 
       <!-- CHURROS: só cobertura (recheio já definido pelo card escolhido) -->
-      <div class="modal-churros" id="modal-churros" style="display:none">
+      <div class="modal-churros" id="modal-churros">
         <div class="churros-bloco">
           <h4>✨ Escolha a Cobertura <small>— define o preço</small></h4>
           <div class="c-chips c-chips--grid" id="churros-cobertura"></div>
@@ -354,7 +352,7 @@
         <p>Seu carrinho está vazio.<br>Adicione itens do cardápio!</p>
       </div>
     </div>
-    <div class="cart-summary" id="cart-summary" style="display:none">
+    <div class="cart-summary" id="cart-summary">
       <div class="cart-total-line">
         <span>Total do pedido:</span>
         <strong id="cart-total-display">R$ 0,00</strong>

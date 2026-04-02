@@ -7,62 +7,62 @@
 // ============================================================
 var CARDAPIO = {
   burguers: [
-    { id:'b1', nome:'Misto Quente',   preco:15, emoji:'🥪', desc:'Pão, presunto e queijo.',
+    { id:'b1', nome:'Misto Quente',   preco:15, emoji:'🥪', img:'misto-quente.png',   desc:'Pão, presunto e queijo.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Queijo extra',p:2},{n:'Presunto extra',p:2}] },
-    { id:'b2', nome:'X Burguer',      preco:18, emoji:'🍔', desc:'Pão, hamburguer artesanal, presunto e queijo.',
+    { id:'b2', nome:'X Burguer',      preco:18, emoji:'🍔', img:'x-burguer.png',       desc:'Pão, hamburguer artesanal, presunto e queijo.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Presunto extra',p:2},{n:'Catupiry',p:2},{n:'Alface e tomate',p:1},{n:'Hamburguer extra',p:5}] },
-    { id:'b3', nome:'X Salada',       preco:22, emoji:'🥗', desc:'Pão, hamburguer, presunto, queijo, alface e tomate.',
+    { id:'b3', nome:'X Salada',       preco:22, emoji:'🥗', img:'x-salada.png',        desc:'Pão, hamburguer, presunto, queijo, alface e tomate.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Catupiry',p:2},{n:'Hamburguer extra',p:5}] },
-    { id:'b4', nome:'X Bacon',        preco:27, emoji:'🥓', desc:'Pão, hamburguer, presunto, queijo, alface, tomate e bacon.',
+    { id:'b4', nome:'X Bacon',        preco:27, emoji:'🥓', img:'x-bacon.png',         desc:'Pão, hamburguer, presunto, queijo, alface, tomate e bacon.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Catupiry',p:2},{n:'Hamburguer extra',p:5}] },
-    { id:'b5', nome:'X Calabresa',    preco:25, emoji:'🌶️', desc:'Pão, hamburguer, presunto, queijo, alface, tomate e calabresa.',
+    { id:'b5', nome:'X Calabresa',    preco:25, emoji:'🌶️', img:'x-calabresa.png',     desc:'Pão, hamburguer, presunto, queijo, alface, tomate e calabresa.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Catupiry',p:2},{n:'Hamburguer extra',p:5}] },
-    { id:'b6', nome:'X Egg',          preco:25, emoji:'🍳', desc:'Pão, hamburguer, presunto, queijo, alface, tomate e ovo.',
+    { id:'b6', nome:'X Egg',          preco:25, emoji:'🍳', img:'x-egg.png',           desc:'Pão, hamburguer, presunto, queijo, alface, tomate e ovo.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Catupiry',p:2},{n:'Hamburguer extra',p:5}] },
-    { id:'b7', nome:'X Frango',       preco:25, emoji:'🍗', desc:'Pão, frango grelhado, queijo, catupiry, alface e tomate.',
+    { id:'b7', nome:'X Frango',       preco:25, emoji:'🍗', img:'x-frango.png',        desc:'Pão, frango grelhado, queijo, catupiry, alface e tomate.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Queijo extra',p:2},{n:'Catupiry extra',p:2},{n:'Alface e tomate extra',p:1}] },
-    { id:'b8', nome:'X Tudo',         preco:35, emoji:'👑', desc:'O rei dos lanches! Tudo dentro.',
+    { id:'b8', nome:'X Tudo',         preco:35, emoji:'👑', img:'x-tudo.png',          desc:'O rei dos lanches! Tudo dentro.',
       adicionais:[{n:'Bacon extra',p:3},{n:'Ovo extra',p:2},{n:'Queijo extra',p:2},{n:'Catupiry',p:2},{n:'Hamburguer extra',p:5}] },
   ],
   dogs: [
-    { id:'d1', nome:'Dog Tradicional',  preco:16, emoji:'🌭', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha e queijo.',
+    { id:'d1', nome:'Dog Tradicional',  preco:16, emoji:'🌭', img:'dog-tradicional.png',  desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha e queijo.',
       adicionais:[{n:'Salsicha extra',p:3},{n:'Bacon extra',p:3},{n:'Queijo extra',p:2},{n:'Batata palha extra',p:1},{n:'Milho extra',p:1}] },
-    { id:'d2', nome:'Dog Bacon',        preco:22, emoji:'🥓', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo e bacon.',
+    { id:'d2', nome:'Dog Bacon',        preco:22, emoji:'🥓', img:'dog-bacon.png',        desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo e bacon.',
       adicionais:[{n:'Salsicha extra',p:3},{n:'Bacon extra',p:3},{n:'Queijo extra',p:2},{n:'Batata palha extra',p:1},{n:'Milho extra',p:1}] },
-    { id:'d3', nome:'Dog Frango',       preco:21, emoji:'🍗', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo, catupiry e frango desfiado.',
+    { id:'d3', nome:'Dog Frango',       preco:21, emoji:'🍗', img:'dog-frango.png',       desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo, catupiry e frango desfiado.',
       adicionais:[{n:'Salsicha extra',p:3},{n:'Frango desfiado extra',p:3},{n:'Catupiry extra',p:2},{n:'Queijo extra',p:2},{n:'Batata palha extra',p:1}] },
-    { id:'d4', nome:'Dog Calabresa',    preco:21, emoji:'🌶️', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo e calabresa.',
+    { id:'d4', nome:'Dog Calabresa',    preco:21, emoji:'🌶️', img:'dog-calabresa.png',    desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo e calabresa.',
       adicionais:[{n:'Salsicha extra',p:3},{n:'Bacon extra',p:3},{n:'Queijo extra',p:2},{n:'Batata palha extra',p:1}] },
-    { id:'d5', nome:'Dog Bacon/Frango', preco:24, emoji:'🔥', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo, catupiry, bacon e frango desfiado.',
+    { id:'d5', nome:'Dog Bacon/Frango', preco:24, emoji:'🔥', img:'dog-bacon-frango.png', desc:'Salsicha, tomate, milho, maionese, ketchup, mostarda, batata palha, queijo, catupiry, bacon e frango desfiado.',
       adicionais:[{n:'Salsicha extra',p:3},{n:'Bacon extra',p:3},{n:'Frango desfiado extra',p:3},{n:'Catupiry extra',p:2},{n:'Queijo extra',p:2},{n:'Batata palha extra',p:1}] },
   ],
   pasteis: [
-    { id:'p1', nome:'Pastel de Carne',        preco:12, emoji:'🥟', desc:'Massa crocante com carne temperada.',           adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p2', nome:'Pastel de Frango',       preco:12, emoji:'🥟', desc:'Massa crocante com frango temperado.',          adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p3', nome:'Pastel de Queijo',       preco:12, emoji:'🧀', desc:'Massa crocante com queijo derretido.',          adicionais:[{n:'Bacon extra',p:2}] },
-    { id:'p4', nome:'Pastel Pizza',           preco:12, emoji:'🍕', desc:'Massa com sabor pizza: queijo, tomate e orégano.', adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p5', nome:'Pastel Carne Queijo',    preco:14, emoji:'🥟', desc:'Carne temperada com queijo derretido.',         adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p6', nome:'Pastel Frango Catupiry', preco:14, emoji:'🥟', desc:'Frango desfiado com catupiry cremoso.',         adicionais:[{n:'Catupiry extra',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p7', nome:'Pastel Frango Bacon',    preco:14, emoji:'🥟', desc:'Frango desfiado com bacon crocante.',           adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
-    { id:'p8', nome:'Pastel Queijo Bacon',    preco:14, emoji:'🥟', desc:'Queijo derretido com bacon crocante.',          adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p1', nome:'Pastel de Carne',        preco:12, emoji:'🥟', img:'pastel-carne.png',         desc:'Massa crocante com carne temperada.',              adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p2', nome:'Pastel de Frango',       preco:12, emoji:'🥟', img:'pastel-frango.png',        desc:'Massa crocante com frango temperado.',             adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p3', nome:'Pastel de Queijo',       preco:12, emoji:'🧀', img:'pastel-queijo.png',        desc:'Massa crocante com queijo derretido.',             adicionais:[{n:'Bacon extra',p:2}] },
+    { id:'p4', nome:'Pastel Pizza',           preco:12, emoji:'🍕', img:'pastel-pizza.png',         desc:'Massa com sabor pizza: queijo, tomate e orégano.', adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p5', nome:'Pastel Carne Queijo',    preco:14, emoji:'🥟', img:'pastel-carne-queijo.png',  desc:'Carne temperada com queijo derretido.',            adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p6', nome:'Pastel Frango Catupiry', preco:14, emoji:'🥟', img:'pastel-frango-catupiry.png', desc:'Frango desfiado com catupiry cremoso.',          adicionais:[{n:'Catupiry extra',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p7', nome:'Pastel Frango Bacon',    preco:14, emoji:'🥟', img:'pastel-frango-bacon.png',  desc:'Frango desfiado com bacon crocante.',              adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
+    { id:'p8', nome:'Pastel Queijo Bacon',    preco:14, emoji:'🥟', img:'pastel-queijo-bacon.png',  desc:'Queijo derretido com bacon crocante.',             adicionais:[{n:'Catupiry',p:2},{n:'Bacon extra',p:2}] },
   ],
   churros: [
-    { id:'c1', nome:'Churros Doce de Leite', preco:7, emoji:'🍡',
+    { id:'c1', nome:'Churros Doce de Leite', preco:7, emoji:'🍡', img:'churros-doce-de-leite.png',
       desc:'Churros fresquinhos com recheio de doce de leite. Escolha a cobertura!',
       tipo:'churros', recheioFixo:'Doce de Leite', adicionais:[] },
-    { id:'c2', nome:'Churros de Chocolate', preco:7, emoji:'🍫',
+    { id:'c2', nome:'Churros de Chocolate',  preco:7, emoji:'🍫', img:'churros-chocolate.png',
       desc:'Churros fresquinhos com recheio de chocolate. Escolha a cobertura!',
       tipo:'churros', recheioFixo:'Chocolate', adicionais:[] },
   ],
   bebidas: [
-    { id:'bv1', nome:'Refri 600 mL',  preco:9,  emoji:'🥤', desc:'Refrigerante gelado 600 mL.',           adicionais:[] },
-    { id:'bv2', nome:'Refri Lata',    preco:6,  emoji:'🧃', desc:'Refrigerante em lata geladinho.',       adicionais:[] },
-    { id:'bv3', nome:'Coca-Cola 1L',  preco:10, emoji:'🥤', desc:'Coca-Cola 1 litro.',                   adicionais:[] },
-    { id:'bv4', nome:'Coca-Cola 2L',  preco:15, emoji:'🥤', desc:'Coca-Cola 2 litros.',                  adicionais:[] },
-    { id:'bv5', nome:'Conquista 2L',  preco:12, emoji:'🥤', desc:'Refrigerante Conquista 2 litros.',      adicionais:[] },
-    { id:'bv6', nome:'Suco 300 mL',   preco:8,  emoji:'🍹', desc:'Suco natural ou de caixinha 300 mL.',  adicionais:[] },
-    { id:'bv7', nome:'Suco 1L',       preco:15, emoji:'🍹', desc:'Suco 1 litro.',                        adicionais:[] },
-    { id:'bv8', nome:'Água',          preco:3,  emoji:'💧', desc:'Água mineral gelada.',                 adicionais:[] },
+    { id:'bv1', nome:'Refri 600 mL',  preco:9,  emoji:'🥤', img:'refri-600ml.png',   desc:'Refrigerante gelado 600 mL.',           adicionais:[] },
+    { id:'bv2', nome:'Refri Lata',    preco:6,  emoji:'🧃', img:'refri-lata.png',    desc:'Refrigerante em lata geladinho.',       adicionais:[] },
+    { id:'bv3', nome:'Coca-Cola 1L',  preco:10, emoji:'🥤', img:'coca-cola-1l.png',  desc:'Coca-Cola 1 litro.',                   adicionais:[] },
+    { id:'bv4', nome:'Coca-Cola 2L',  preco:15, emoji:'🥤', img:'coca-cola-2l.png',  desc:'Coca-Cola 2 litros.',                  adicionais:[] },
+    { id:'bv5', nome:'Conquista 2L',  preco:12, emoji:'🥤', img:'conquista-2l.png',  desc:'Refrigerante Conquista 2 litros.',      adicionais:[] },
+    { id:'bv6', nome:'Suco 300 mL',   preco:8,  emoji:'🍹', img:'suco-300ml.png',    desc:'Suco natural ou de caixinha 300 mL.',  adicionais:[] },
+    { id:'bv7', nome:'Suco 1L',       preco:15, emoji:'🍹', img:'suco-1l.png',       desc:'Suco 1 litro.',                        adicionais:[] },
+    { id:'bv8', nome:'Água',          preco:3,  emoji:'💧', img:'agua.png',          desc:'Água mineral gelada.',                 adicionais:[] },
   ]
 };
 
@@ -595,15 +595,14 @@ function criarCard(prod) {
   var isChurros = prod.tipo === 'churros';
 
   var card = document.createElement('div');
-  card.className = 'produto-card';
+  card.className = 'produto-card produto-card--img';
 
   var rodapeHtml;
   if (isChurros) {
-    // "a partir de..." aparece acima do botão, em linha própria
     rodapeHtml =
       '<div class="card-footer card-footer--churros">' +
         '<span class="card-preco-apart">a partir de R$ 7,00</span>' +
-        '<button class="btn-cobertura">🍫 Escolher Cobertura</button>' +
+        '<button class="btn-cobertura">Escolher Cobertura</button>' +
       '</div>';
   } else {
     rodapeHtml =
@@ -617,7 +616,9 @@ function criarCard(prod) {
   }
 
   card.innerHTML =
-    '<span class="card-emoji">' + prod.emoji + '</span>' +
+    '<div class="card-img-wrap">' +
+      '<img src="img/' + prod.img + '" alt="' + prod.nome + '" class="card-img" loading="lazy">' +
+    '</div>' +
     '<div class="card-nome">' + prod.nome + '</div>' +
     '<div class="card-desc">' + prod.desc + '</div>' +
     rodapeHtml;
